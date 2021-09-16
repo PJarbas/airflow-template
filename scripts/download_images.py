@@ -1,6 +1,7 @@
 import requests
 import urllib.request
 from datetime import date
+import pathlib
 
 """
 Dowload Dog images
@@ -15,6 +16,8 @@ def get_images(file_name):
     base_url = "https://dog.ceo/api/breeds/image/random"
     response = requests.get(url=base_url)
     image_url = response.json()["message"]
+    
+    pathlib.Path("data").mkdir(parents=True, exist_ok=True)
     
     # save the image
     urllib.request.urlretrieve(image_url, file_name)

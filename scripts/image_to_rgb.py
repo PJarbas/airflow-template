@@ -4,6 +4,7 @@ import sys
 from PIL import Image
 import numpy as np
 from datetime import date
+import pathlib
 
 
 class ToRGB:
@@ -46,6 +47,8 @@ class ToRGB:
                 r, g, b = self.img.getpixel((x, y))
                 image[x, y] = self.pixel(r, g, b, color)
 
+        pathlib.Path("output").mkdir(parents=True, exist_ok=True)
+        
         image_out.save('output/{0}.png'.format(color))
 
 
